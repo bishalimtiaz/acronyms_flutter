@@ -14,6 +14,7 @@ abstract class BaseRemoteSource {
   Future<Response<T>> callApiWithErrorParser<T>(Future<Response<T>> api) async {
     try {
       Response<T> response = await api;
+      print('response_debug: $response');
 
       if (response.statusCode != HttpStatus.ok ||
           (response.data as Map<String, dynamic>)['statusCode'] !=
