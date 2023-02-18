@@ -1,23 +1,19 @@
+import 'package:acronyms_flutter/app/modules/landing/landing_view.dart';
 import 'package:go_router/go_router.dart';
 import '/app/routes/app_routes.dart';
-
-
 
 class AppPages {
   AppPages._();
 
   static final router = GoRouter(
     debugLogDiagnostics: true,
-    initialLocation: Paths.LANDING,
+    initialLocation: Paths.landing,
     routes: <GoRoute>[
-      // GoRoute(
-      //     name: Routes.LANDING,
-      //     path: Paths.LANDING,
-      //     builder: (context, state) => LandingView()),
-      // GoRoute(
-      //     name: Routes.PROJECT_DETAILS,
-      //     path: Paths.PROJECT_DETAILS,
-      //     builder: (context, state) => ProjectDetailsView()),
+      GoRoute(
+        name: Routes.landing,
+        path: Paths.landing,
+        builder: (context, state) => const LandingView(),
+      ),
     ],
   );
 }
