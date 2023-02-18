@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:acronyms_flutter/app/flavors/build_config.dart';
 import 'package:acronyms_flutter/app/network/dio_provider.dart';
 import 'package:acronyms_flutter/app/network/error_handlers.dart';
@@ -14,14 +12,6 @@ abstract class BaseRemoteSource {
   Future<Response<T>> callApiWithErrorParser<T>(Future<Response<T>> api) async {
     try {
       Response<T> response = await api;
-      print('response_debug: $response');
-
-      if (response.statusCode != HttpStatus.ok ||
-          (response.data as Map<String, dynamic>)['statusCode'] !=
-              HttpStatus.ok) {
-        // TODO
-      }
-
       return response;
     } on DioError catch (dioError) {
       Exception exception = handleDioError(dioError);

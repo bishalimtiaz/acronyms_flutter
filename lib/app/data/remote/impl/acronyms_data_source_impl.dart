@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:acronyms_flutter/app/data/model/query/acronymsMeaningQueryParam.dart';
 import 'package:acronyms_flutter/app/data/model/response/acronym_meaning.dart';
 import 'package:acronyms_flutter/app/data/remote/interface/acronyms_data_source.dart';
@@ -19,6 +21,6 @@ class AcronymsDataSourceImpl extends AcronymsDataSource {
   }
 
   AcronymMeaningResponse _parseAcronymMeaningsResponse(Response<dynamic> response) {
-    return AcronymMeaningResponse.fromJson(response.data);
+    return AcronymMeaningResponse.fromJson(json.decode(response.data));
   }
 }

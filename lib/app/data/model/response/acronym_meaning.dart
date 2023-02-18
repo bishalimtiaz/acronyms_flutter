@@ -1,10 +1,11 @@
+
 class AcronymMeaningResponse {
   final String? acronym;
   final List<AcronymMeaning> meanings;
 
   AcronymMeaningResponse({required this.acronym, required this.meanings});
 
-  factory AcronymMeaningResponse.fromJson(List<dynamic> json) {
+  factory AcronymMeaningResponse.fromJson(dynamic json) {
     return AcronymMeaningResponse(
       acronym: json.isNotEmpty ? json[0]['sf'] : '',
       meanings: json.isNotEmpty
@@ -20,7 +21,7 @@ class AcronymMeaning {
 
   AcronymMeaning({required this.meaning});
 
-  factory AcronymMeaning.fromJson(Map<String, dynamic> json) {
+  factory AcronymMeaning.fromJson(dynamic json) {
     return AcronymMeaning(
       meaning: json['lf'],
     );

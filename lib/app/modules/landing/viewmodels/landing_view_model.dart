@@ -1,4 +1,3 @@
-
 import 'package:acronyms_flutter/app/core/base/base_view_model.dart';
 import 'package:acronyms_flutter/app/core/utils/debouncer.dart';
 import 'package:acronyms_flutter/app/data/model/response/acronym_meaning.dart';
@@ -10,12 +9,13 @@ import 'package:kiwi/kiwi.dart';
 class LandingViewModel extends BaseViewModel {
   late final AcronymMeaningRepository repository;
   final TextEditingController textEditingController = TextEditingController();
+  final Debouncer _debouncer = Debouncer(milliseconds: 1000);
 
   final ValueNotifier<AcronymUiModel> modelNotifier =
       ValueNotifier<AcronymUiModel>(AcronymUiModel());
 
   void searchAcronyms() {
-    Debouncer(milliseconds: 2000).run(() {
+    _debouncer.run(() {
       _searchAcronyms();
     });
   }

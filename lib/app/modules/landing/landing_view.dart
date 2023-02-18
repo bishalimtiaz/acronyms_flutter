@@ -25,10 +25,10 @@ class _LandingViewState extends AppState<LandingView, LandingViewModel> {
 
   @override
   Widget buildChild(BuildContext context) {
-    return Padding(
+    return SingleChildScrollView(
       padding: const EdgeInsets.symmetric(horizontal: 20).copyWith(top: 10),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
           ValueListenableBuilder(
@@ -36,9 +36,11 @@ class _LandingViewState extends AppState<LandingView, LandingViewModel> {
               builder: (BuildContext context, AcronymUiModel model, _) {
                 return ListView.separated(
                   itemCount: model.meanings.length,
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemBuilder: (BuildContext context, int index) {
                     return Container(
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: Colors.white,
                         border: Border.all(color: Colors.black, width: 2),
